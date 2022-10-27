@@ -26,15 +26,17 @@ const store = configureStore({
 });
 
 // Can still subscribe to the store
-store.subscribe(() => console.log(store.getState()));
 
 export function setupCounter(element) {
-  let counter = 0;
-  const setCounter = (count) => {
+  const increaseCounter = () => {
     store.dispatch(incremented());
-    counter = store.getState().value;
-    element.innerHTML = `count is ${counter}`;
   };
-  element.addEventListener("click", () => setCounter(counter + 1));
-  setCounter(0);
+  const counter = store.getState().value;
+  element.innerHTML = `count is ${counter}`;
+
+  store.subscribe(() => {
+    const counter = store.getState().value;
+    element.innerHTML = `count is ${counter}`;
+  });
+  element.addEventListener("click", () => increaseCounter());
 }

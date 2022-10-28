@@ -30,7 +30,7 @@ Eg:
 ## Let's write some tests with mocha and chai
 
 ```bash
-npm install mocha chai --save-dev
+npm install mocha chai @babel/cli @babel/core @babel/polyfill @babel/preset-env @babel/register --save-dev
 ```
 
 ```js
@@ -47,6 +47,7 @@ describe("app.js", () => {
 ### To support ES6
 
 ```bash
+npm i @babel/cli @babel/core @babel/polyfill @babel/preset-env @babel/register --save-dev
   "@babel/cli": "^7.19.3",
   "@babel/core": "^7.19.6",
   "@babel/polyfill": "^7.12.1",

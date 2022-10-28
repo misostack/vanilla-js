@@ -21,6 +21,15 @@
       "runtimeArgs": ["--nolazy"]
     },
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest: current file",
+      "cwd": "${workspaceRoot}/test-with-jestjs",
+      "program": "${workspaceFolder}/test-with-jestjs/node_modules/jest/bin/jest.js",
+      "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
+      "console": "integratedTerminal"
+    },
+    {
       "type": "chrome",
       "request": "launch",
       "name": "Debug hello redux",

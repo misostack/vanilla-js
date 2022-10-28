@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "test:debug": "mocha --config ./.mocharc.yml --timeout 0 --exit --inspect",
+    "test:debug": "mocha --config ./.mocharc.yml --timeout 0 --exit",
     "test": "nyc mocha --require @babel/polyfill --require @babel/register",
     "test:report": "nyc --reporter=html --reporter=text mocha && serve ./coverage"
   },

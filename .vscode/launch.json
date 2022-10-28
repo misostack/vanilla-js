@@ -5,6 +5,22 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Mocha Tests",
+      "cwd": "${workspaceRoot}/headfirst-unit-test",
+      "program": "${workspaceRoot}/headfirst-unit-test/node_modules/mocha/bin/mocha",
+      "args": [
+        "--config",
+        "${workspaceRoot}/headfirst-unit-test/.mocharc.debug.yml",
+        "${workspaceRoot}/${relativeFile}"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "runtimeArgs": ["--nolazy"]
+    },
+    {
       "type": "chrome",
       "request": "launch",
       "name": "Debug hello redux",

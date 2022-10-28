@@ -4,13 +4,20 @@
   "description": "> What is unit test and how to write test for javascript application?",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha",
+    "build": "babel src -d lib",
+    "test:debug": "mocha --config ./.mocharc.yml --timeout 0 --exit --inspect",
+    "test": "nyc mocha --require @babel/polyfill --require @babel/register",
     "test:report": "nyc --reporter=html --reporter=text mocha && serve ./coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/register": "^7.18.9",
     "chai": "^4.3.6",
     "mocha": "^10.1.0",
     "nyc": "^15.1.0",

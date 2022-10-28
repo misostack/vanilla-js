@@ -16,6 +16,4 @@ class Cube {
   }
 }
 
-module.exports = {
-  Cube: Cube,
-};
+export { Cube };

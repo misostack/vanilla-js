@@ -1,4 +1,4 @@
-const httpHelper = {
+export const httpHelper = {
   get: async (url, query = {}) => {
     const userQuery = new URLSearchParams();
     Reflect.ownKeys(query).map((key) => {
@@ -13,9 +13,10 @@ const httpHelper = {
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
+      const data = await response.json();
       return {
         error: null,
-        data: response.json(),
+        data,
       };
     } catch (error) {
       return {

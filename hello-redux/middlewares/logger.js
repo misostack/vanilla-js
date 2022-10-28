@@ -1,7 +1,7 @@
-const logger = (storeAPI) => (dispatch) => (action) => {
+const logger = (storeAPI) => (next) => (action) => {
   console.log("oldState", storeAPI.getState());
-  console.log("dispatch", action);
-  const res = dispatch(action);
+  console.log("next", action);
+  const res = next(action);
   console.log("res", res);
   return res;
 };

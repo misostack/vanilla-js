@@ -2,6 +2,8 @@
 
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import exampleEnhancer from "./enhancers/example-enhancer";
+import { httpHelper } from "./helpers/http-helper";
+import thunkMiddleware from "./middlewares/thunk-middleware";
 // Example: todolist application
 // 1st step: define application states
 const STATUSES = {
@@ -53,21 +55,33 @@ const store = configureStore({
   reducer: {
     todos: todosReducer,
   },
-  middleware: [],
+  middleware: [thunkMiddleware],
   enhancers: [exampleEnhancer],
 });
 
 // let's test
 
+export const fetchTodos = () => async (dispatch, getState) => {
+  // In this example, the extra arg is an object with an API service inside
+  dispatch(loadTodoList());
+  const { data, error } = await httpHelper.get("http://localhost:1337/todos");
+  console.log(data, error);
+  if (error) {
+    return dispatch(todoListLoadedFailed(error));
+  }
+  return dispatch(todoListLoaded(data));
+};
+
 export const { loadTodoList, todoListLoadedFailed, todoListLoaded } =
   todosSlice.actions;
 
-store.dispatch(loadTodoList());
-store.dispatch(
-  todoListLoaded([{ id: 1, name: "Task 1", status: STATUSES.PENDING }])
-);
-store.dispatch(loadTodoList());
-store.dispatch(todoListLoadedFailed("400 error"));
+// store.dispatch(loadTodoList());
+store.dispatch(fetchTodos());
+// store.dispatch(
+//   todoListLoaded([{ id: 1, name: "Task 1", status: STATUSES.PENDING }])
+// );
+// store.dispatch(loadTodoList());
+// store.dispatch(todoListLoadedFailed("400 error"));
 
 export const reduxTodoListExample = () => {
   store.subscribe(() => {

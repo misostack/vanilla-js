@@ -15,7 +15,7 @@ const STATES = {
   COMPLETED: "completed",
   ERROR: "error",
 };
-const initialStates = {
+export const initialStates = {
   items: [],
   filters: [],
   pageNumber: 1,
@@ -45,11 +45,13 @@ const todosSlice = createSlice({
   },
 });
 
+export const todosReducer = todosSlice.reducer;
+
 // 3rd step : create store by combining all reducers
 
 const store = configureStore({
   reducer: {
-    todos: todosSlice.reducer,
+    todos: todosReducer,
   },
   middleware: [],
   enhancers: [exampleEnhancer],
@@ -57,7 +59,7 @@ const store = configureStore({
 
 // let's test
 
-const { loadTodoList, todoListLoadedFailed, todoListLoaded } =
+export const { loadTodoList, todoListLoadedFailed, todoListLoaded } =
   todosSlice.actions;
 
 store.dispatch(loadTodoList());

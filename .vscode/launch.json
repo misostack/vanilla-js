@@ -35,6 +35,15 @@
       "name": "Debug hello redux",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/hello-redux"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Redux Reducer",
+      "cwd": "${workspaceRoot}/hello-redux",
+      "program": "${workspaceFolder}/hello-redux/node_modules/jest/bin/jest.js",
+      "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
+      "console": "integratedTerminal"
     }
   ]
 }

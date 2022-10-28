@@ -15,3 +15,5 @@ npm create vite@latest hello-world -- --template vanilla-ts
 # Examples
 
 - [What is redux and how to use it?](./hello-redux/)
+- [How to setup a mock server for testing api integration purpose?](./json-server/)
+- [What is unit test and how to write test for javascript application?](./headfirst-unit-test)

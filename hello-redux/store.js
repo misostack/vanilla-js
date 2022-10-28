@@ -1,6 +1,7 @@
 // create an example of using redux
 
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import exampleEnhancer from "./enhancers/example-enhancer";
 // Example: todolist application
 // 1st step: define application states
 const STATUSES = {
@@ -15,7 +16,7 @@ const STATES = {
   ERROR: "error",
 };
 const initialStates = {
-  todos: [],
+  items: [],
   filters: [],
   pageNumber: 1,
   pageSize: 10,
@@ -35,7 +36,7 @@ const todosSlice = createSlice({
     },
     todoListLoaded: (state, action) => {
       state.state = STATES.COMPLETED;
-      state.todos = action.payload;
+      state.items = action.payload;
     },
     todoListLoadedFailed: (state, action) => {
       state.state = STATES.ERROR;
@@ -50,6 +51,8 @@ const store = configureStore({
   reducer: {
     todos: todosSlice.reducer,
   },
+  middleware: [],
+  enhancers: [exampleEnhancer],
 });
 
 // let's test

@@ -154,3 +154,6 @@ export const reduxTodoListExample = () => {
   });
 };
 ```
+
+But life is not easy like that. In real world, we have to call API which is async.
+So what should be we do

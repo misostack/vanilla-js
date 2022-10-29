@@ -197,3 +197,48 @@ Let's dive in **code**
 ```bash
 npm i redux-thunk
 ```
+
+```js
+import thunk from "redux-thunk";
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  },
+
+  enhancers: [applyMiddleware(thunk)],
+});
+
+export const fetchTodosAsync = createAsyncThunk(
+  "todos/fetchTodos",
+  async () => {
+    const res = await httpHelper.get("http://localhost:1337/todos");
+    return res;
+  }
+);
+// 2nd step: define reducers and actions
+const todosSlice = createSlice({
+  initialState: initialStates,
+  name: "todosSlice",
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchTodosAsync.pending, (state, action) => {
+        state.state = STATES.LOADING;
+      })
+      .addCase(fetchTodosAsync.fulfilled, (state, action) => {
+        const { error, data } = action.payload;
+        if (error) {
+          state.error = error;
+          state.state = STATES.ERROR;
+          return;
+        }
+        // otherwise
+        state.items = data;
+        state.state = STATES.COMPLETED;
+      });
+  },
+});
+
+export const todosReducer = todosSlice.reducer;
+```

@@ -23,3 +23,10 @@ node ./node_modules/jest/bin/jest.js --init
       "console": "integratedTerminal"
     },
 ```
+
+## Mocks
+
+- [Es6 class mocks](https://jestjs.io/docs/es6-class-mocks)
+- [Google Test Primer](https://github.com/google/googletest/blob/main/docs/primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests-same-data-multiple-tests)
+- [Test fixture](https://en.wikipedia.org/wiki/Test_fixture)
+- [Mock vs Stub & Spy](https://www.javatpoint.com/mock-vs-stub-vs-spy)

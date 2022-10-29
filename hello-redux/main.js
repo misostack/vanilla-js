@@ -1,7 +1,8 @@
 import "./style.css";
 import javascriptLogo from "./javascript.svg";
 import { setupCounter } from "./counter.js";
-import { reduxTodoListExample } from "./store";
+// import { reduxTodoListExample } from "./store";
+import { reduxSagaTodoListExample } from "./store-saga";
 
 document.querySelector("#app").innerHTML = `
   <div>
@@ -22,4 +23,5 @@ document.querySelector("#app").innerHTML = `
 `;
 
 setupCounter(document.querySelector("#counter"));
-reduxTodoListExample();
+// reduxTodoListExample();
+reduxSagaTodoListExample();

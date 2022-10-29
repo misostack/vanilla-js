@@ -181,3 +181,19 @@ describe("todosSlice", () => {
 
 But life is not easy like that. In real world, we have to call API which is async.
 So what should be we do
+
+## What is redux thunk and how to use it?
+
+- [Redux thunk](https://github.com/reduxjs/redux-thunk)
+
+Sometimes user will trigger and event that leads to another event, so how do you implement that inside redux. Eg: we have fetchData event which will trigger and event show loading modal, then call the api to retrieve data, when the request is completed, we can receive data or an error.
+And each of steps like that is an event.
+It means you have to dispatch a specific action in an action.
+And that's when we use "thunk" - the piece of code that delay some work.
+For redux specially, "thunks" are pattern of writing functions or logic inside that can interact with a Redux store's dispatch and getState methods.
+
+Let's dive in **code**
+
+```bash
+npm i redux-thunk
+```

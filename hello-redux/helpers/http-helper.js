@@ -13,7 +13,18 @@ export const httpHelper = {
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
+      // console.log(response.ok, response.status, response.statusText);
       const data = await response.json();
+      if (!response.ok) {
+        return {
+          data: null,
+          error: {
+            status: response.status,
+            statusText: response.statusText,
+            data: data,
+          },
+        };
+      }
       return {
         error: null,
         data,

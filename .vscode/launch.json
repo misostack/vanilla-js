@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug file",
+      "program": "${file}",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Mocha Tests",
